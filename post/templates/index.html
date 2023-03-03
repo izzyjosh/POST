@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+ </head>
+ <body>
+ 	{{ request.user }}
+ 	<nav>
+ 		<ul>
+ 			<li>
+ 				<a href="{% url 'signup' %}">Sign Up</a>
+ 			</li>
+ 			<li>
+ 				<a href="{% url 'signin' %}">Sign In</a>
+ 			</li>
+ 			<li>
+ 				<a href="{% url 'post' %}">Create Post</a>
+ 			</li>
+ 		</ul>
+ 		{% for fpost in posts %}
+ 		<ul>
+ 			<li>
+ 				<h2>{{ fpost.post }}</h2>
+ 			</li>
+ 			<a href="{% url 'l_comment' fpost.id%}"><button>comment</button></a>
+ 			<a href="{% url 'view_comment' fpost.id %}"><button>view comment</button></a>
+ 			<a href="{% url 'confirm' fpost.id %}"><button>delete</button></a>
+ 		</ul>
+ 		{% endfor %}
+ 	</nav>
+ </body>
+ 
+ </html>

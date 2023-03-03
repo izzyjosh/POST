@@ -1,0 +1,10 @@
+<h3><a href="{% url 'index' %}">Home</a></h3>
+<h1>All Comments</h1>
+{% for comm in comment %}
+	<ul>
+		<li>
+			<h2>{{ comm.comment }}</h2>
+		</li>
+		<a href="{% url 'delete_c' comm.id%}"><button>delete</button></a>
+	</ul>
+{% endfor%}
