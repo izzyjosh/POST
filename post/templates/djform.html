@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>Create Task</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .form-wrapper {
+            margin: 2em 1em;
+            padding: 1em;
+            background: #27282c;
+            color: #fff;
+        }
+        .input,
+        .textarea {
+            width: 100%;
+            display: inline-block;
+            margin: 10px 0;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            background: #f2f2f2;
+            padding: 12px;
+        }
+        .textarea {
+            height: 100px;
+            border-radius: 0;
+        }
+        .btn {
+            border-radius: 50px;
+            background: #58e56c;
+            border: none;
+            padding: 12px 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-wrapper">
+        <form action="" method="post">
+        {% csrf_token %}
+        	{{ form.as_p }}
+            <button class="btn">Save</button>
+        </form>
+    </div>
+</body>
+</html>
