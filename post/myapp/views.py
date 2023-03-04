@@ -49,7 +49,6 @@ def signin(request):
 		user = auth.authenticate(username=username, password=password1)
 		if user is not None:
 			auth.login(request, user)
-			messages.info(request, "signed in successfully")
 			return redirect("index")
 		else:
 			messages.error(request, "incorrect password or username")
