@@ -2,14 +2,19 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from .models import Posts, Comment
+from .forms import PostForm
 
 
 def index(request):
+	if not request.user.is_authenticated:
+		return redirect("signin")
 	posts = Posts.objects.filter(p_owner=request.user)
 	
 	return render(request, "index.html", {"posts":posts})
 	
 def signup(request):
+	if request.user.is_authenticated:
+		return redirect("index")
 	if request.method == "POST":
 		username = request.POST.get("username")
 		email = request.POST.get("email")
@@ -35,6 +40,8 @@ def signup(request):
 	
 	
 def signin(request):
+	if request.user.is_authenticated:
+		return redirect("index")
 	if request.method == "POST":
 		username = request.POST.get("username")
 		password1 = request.POST.get("password1")
@@ -96,3 +103,26 @@ def delete_c(request, com_id):
 def confirm(request, p_id):
 	post = Posts.objects.get(id=p_id)
 	return render(request, "confirm.html", {"post":post})
+	
+	
+def update(request, po_id):
+	post = Posts.objects.get(id=po_id)
+	form = PostForm(request.POST or None, instance=post)
+	
+	if form.is_valid():
+		form.save()
+		return redirect("index")
+	return render(request, "djform.html", {"form":form})
+	
+def update_c(request, c_id):
+	comment = Comment.objects.get(id=c_id)
+	form = PostForm(request.POST or None, instance=comment)
+	
+	if form.is_valid():
+		form.save()
+		return redirect("index")
+	return render(request, "djform.html", {"form":form})
+	
+def logout(request):
+	auth.logout(request)
+	return redirect("signin")
