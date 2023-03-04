@@ -11,6 +11,7 @@ urlpatterns = [
 	path("delete/<int:post_id>/", views.delete, name="delete"), 
 	path("delete_c/<int:com_id>/", views.delete_c, name="delete_c"), 
 	path("confirm/<int:p_id>/", views.confirm, name="confirm"), 
-	path("create/djform/", views.create_with_djform),
-	path("update/<int:post_id>/", views.update, name="update"),
+	path("update/<int:po_id>/", views.update, name="update"),
+	path("logout", views.logout, name="logout"), 
+	path("update_c/<int:c_id>/", views.update_c, name="update_c")
 ]
