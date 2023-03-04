@@ -6,10 +6,11 @@
             box-sizing: border-box;
         }
         .form-wrapper {
-            margin: 2em 1em;
-            padding: 1em;
-            background: #27282c;
-            color: #fff;
+    		padding: 1em;
+    		box-shadow: hsl(0,0%,80%) 0 0 10px;
+                width: 80%;
+                margin: 2em auto;
+                padding: 1em;
         }
         .input,
         .textarea {
@@ -27,15 +28,22 @@
             border-radius: 0;
         }
         .btn {
+            padding: 12px 20px;
+            background: #27282c;
+            display: inline-block;
+            margin-top: 1em;
+            color: #fff;
+            border: 2px solid orange;
             border-radius: 50px;
-            background: #58e56c;
-            border: none;
-            padding: 12px 50px;
+        }
+        h2 {
+        	color: orange;
         }
     </style>
 </head>
 <body>
     <div class="form-wrapper">
+    	<h2>Update Post</h2>
         <form action="" method="post">
         {% csrf_token %}
         	{{ form.as_p }}

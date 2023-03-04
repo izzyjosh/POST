@@ -5,33 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #27282c;
+            padding: 1em 5%;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav-links ul {
+            display: flex;
+            gap: 1em;
+        }
+        .nav-links ul li {
+            list-style: none;
+        }
+        main {
+            margin: 2em;
+            line-height: 2em;
+        }
+        main ol{
+        	margin: 1em 0 0 0;
+        }
+        main ol li {
+        	margin-left: 1em;
+        }
+        main ul li {
+        	margin-left: 2em;
+        }
+        .com_container{
+    		box-shadow: hsl(0,0%,80%) 0 0 10px;
+                width: 80%;
+                margin: 2em auto;
+                padding: 2em;
+        }
+        h4 {
+        	color: orange;
+        }
+    </style>
  </head>
  <body>
- 	{{ request.user }}
+ 
  	<nav>
- 		<ul>
- 			<li>
- 				<a href="{% url 'signup' %}">Sign Up</a>
- 			</li>
- 			<li>
- 				<a href="{% url 'signin' %}">Sign In</a>
- 			</li>
- 			<li>
- 				<a href="{% url 'post' %}">Create Post</a>
- 			</li>
- 		</ul>
+ 		<a href="{% url 'index' %}">{{ request.user }}</a>
+ 		<div class="nav_links">
+	 		<ul>
+	 			{%if not request.user.is_authenticated%}
+	 			<li>
+	 				<a href="{% url 'signup' %}">Sign Up</a>
+	 			</li>
+	 			<li>
+	 				<a href="{% url 'signin' %}">Sign In</a>
+	 			</li>
+	 			{% else %}
+	 			<li>
+	 				<a href="{% url 'logout' %}">logout</a>
+	 			</li>
+	 			{% endif %}
+	 			<li>
+	 				<a href="{% url 'post' %}">Create Post</a>
+	 			</li>
+	 		</ul>
+ 		</div>
+ 	</nav>
+ 	<main>
+ 		
+ 		<ol>
  		{% for fpost in posts %}
- 		<ul>
  			<li>
  				<h2>{{ fpost.post }}</h2>
+ 				<div class="com_container">
+ 				<h4>comments</h4>
+ 				{% for comment in fpost.comment_set.all %}
+ 					<ul>
+ 						<li>{{ comment }}</li>
+ 					</ul>
+ 				{% endfor %}
+ 				</div>
  			</li>
  			<a href="{% url 'l_comment' fpost.id%}"><button>comment</button></a>
  			<a href="{% url 'view_comment' fpost.id %}"><button>view comment</button></a>
  			<a href="{% url 'confirm' fpost.id %}"><button>delete</button></a>
  			<a href="{% url 'update' fpost.id%}"><button>update</button></a>
- 		</ul>
  		{% endfor %}
- 	</nav>
+ 		</ol>
+ 	</main>
  </body>
  
  </html>
