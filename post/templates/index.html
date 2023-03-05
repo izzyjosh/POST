@@ -28,6 +28,7 @@
         }
         .nav-links ul li {
             list-style: none;
+            text-decoration: none;
         }
         main {
             margin: 2em;
@@ -35,6 +36,9 @@
         }
         main ol{
         	margin: 1em 0 0 0;
+        }
+        main ol a{
+        	margin: 0.3 em;
         }
         main ol li {
         	margin-left: 1em;
@@ -50,6 +54,16 @@
         }
         h4 {
         	color: orange;
+        }
+        .btn {
+        	padding: 0.4em 0.5em;
+        	margin: 0.2em;
+        	display: inline-block;
+        	background: white;
+        	color: black;
+        	border-radius: 50px;
+        	border: white;
+        	box-shadow: hsl(0,0%,70%) 0 0 10px;
         }
     </style>
  </head>
@@ -87,16 +101,16 @@
  				<h4>comments</h4>
  				{% for comment in fpost.comment_set.all %}
  					<ul>
- 						<li>{{ comment }}</li>
+ 						<li>{{ comment|truncatewords:3 }}</li>
  					</ul>
  				{% endfor %}
  				</div>
  			</li>
- 			<a href="{% url 'l_comment' fpost.id%}"><button>comment</button></a>
- 			<a href="{% url 'view_comment' fpost.id %}"><button>view comment</button></a>
- 			<a href="{% url 'confirm' fpost.id %}"><button>delete</button></a>
- 			<a href="{% url 'update' fpost.id%}"><button>update</button></a>
- 		{% endfor %}
+ 			<a href="{% url 'l_comment' fpost.id%}"><button class="btn">comment</button></a>
+ 			<a href="{% url 'view_comment' fpost.id %}"><button class="btn">view comment</button></a>
+ 			<a href="{% url 'confirm' fpost.id %}"><button class="btn">delete</button></a>
+ 			<a href="{% url 'update' fpost.id%}"><button class="btn">update</button></a>
+ 		{% endfor %}	
  		</ol>
  	</main>
  </body>
