@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Posts</title>
+    <style>
+    	* {
+    		margin: 0;
+    		padding: 0;
+    		box-sizing: border-box;
+    	}
+    	.container {
+    		box-shadow: hsl(0,0%,80%) 0 0 10px;
+                width: 80%;
+                margin: 2em auto;
+                padding: 1em;	
+    	}
+        .btn {
+            padding: 12px 20px;
+            background: #27282c;
+            display: inline-block;
+            margin-top: 1em;
+            color: #fff;
+            border: 2px solid orange;
+            border-radius: 50px;
+        }
+        h2 {
+        	color: orange;
+        }
+    </style>
+</head>
+<body>
+	<div class="container">
+		<h2>Confirm delete</h2>
+		<p>are u sure u want to delete this comment ?</p>
+		<a href="{% url 'delete_c' comment.id%}"><button class="btn">yes</button></a>
+		<a href="{% url 'index'%}"><button class="btn">no</button></a>
+	</div>
+</body>
+</html>
