@@ -13,5 +13,5 @@ urlpatterns = [
 	path("confirm/<int:p_id>/", views.confirm, name="confirm"), 
 	path("update/<int:po_id>/", views.update, name="update"),
 	path("logout", views.logout, name="logout"), 
-	path("update_c/<int:c_id>/", views.update_c, name="update_c")
+	path("update_c/<int:c_id>/", views.update_c, name="update_c"), 
 ]
