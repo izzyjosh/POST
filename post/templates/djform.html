@@ -12,8 +12,7 @@
                 margin: 2em auto;
                 padding: 1em;
         }
-        .input,
-        .textarea {
+        .input {
             width: 100%;
             display: inline-block;
             margin: 10px 0;
@@ -48,6 +47,7 @@
         {% csrf_token %}
         	{{ form.as_p }}
             <button class="btn">Save</button>
+            <a href="{% url 'index' %}"><button class="btn">cancel</button></a>
         </form>
     </div>
 </body>
