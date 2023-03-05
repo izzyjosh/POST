@@ -1,11 +1,30 @@
-<h3><a href="{% url 'index' %}">Home</a></h3>
-<h1>Comments</h1>
-{% for comm in comment %}
-	<ul>
-		<li>
-			<h2>{{ comm.comment }}</h2>
-		</li>
-		<a href="{% url 'delete_c' comm.id%}"><button>delete</button></a>
-		<a href="{% url 'update_c' comm.id %}"><button>update</button></a>
-	</ul>
-{% endfor%}
+<head>
+	<style>
+		.btn {
+	        	padding: 0.4em 0.5em;
+	        	margin: 0.2em;
+	        	display: inline-block;
+	        	background: white;
+	        	color: black;
+	        	border-radius: 50px;
+	        	border: white;
+	        	box-shadow: hsl(0,0%,70%) 0 0 10px;
+		}
+		h1 {
+			color: orange;
+		}		
+	</style>
+</head>
+<body>
+	<h3><a href="{% url 'index' %}">Home</a></h3>
+	<h1>Comments</h1>
+	{% for comm in comment %}
+		<ul>
+			<li>
+				<h2>{{ comm.comment }}</h2>
+			</li>
+			<a href="{% url 'delete_c' comm.id %}"><button class="btn">delete</button></a>
+			<a href="{% url 'update_c' comm.id %}"><button class="btn">update</button></a>
+		</ul>
+	{% endfor%}
+</body>
