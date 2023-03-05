@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from .models import Posts, Comment
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 
 def index(request):
@@ -103,6 +103,10 @@ def confirm(request, p_id):
 	post = Posts.objects.get(id=p_id)
 	return render(request, "confirm.html", {"post":post})
 	
+#def confirm_c(request, c_id):
+#	comment = Comment.objects.get(id=c_id)
+#	return render(request, "confirm_c.html", {"comment":comment})
+	
 	
 def update(request, po_id):
 	post = Posts.objects.get(id=po_id)
@@ -115,7 +119,7 @@ def update(request, po_id):
 	
 def update_c(request, c_id):
 	comment = Comment.objects.get(id=c_id)
-	form = PostForm(request.POST or None, instance=comment)
+	form = CommentForm(request.POST or None, instance=comment)
 	
 	if form.is_valid():
 		form.save()
