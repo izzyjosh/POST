@@ -1,58 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Posts</title>
-    <style>
-    	* {
-    		margin: 0;
-    		padding: 0;
-    		box-sizing: border-box;
-    	}
-    	.container {
-    		padding: 1em;
-    		box-shadow: hsl(0,0%,80%) 0 0 10px;
-                width: 80%;
-                margin: 2em auto;
-                padding: 1em;	
-    	}
-        .container form textarea {
-            width: 100%;
-            padding: 10px;
-         }
-        .btn {
-            padding: 12px 20px;
-            background: #27282c;
-            display: inline-block;
-            margin-top: 1em;
-            color: #fff;
-            border: 2px solid orange;
-            border-radius: 50px;
-        }        
-        a {
-            text-decoration: none;
-            color: blue;
-        }
-        h2 {
-        	color: orange;
-        }
-    </style>
-</head>
-<body>
+{% extends "post_comm.html" %}
+
+{% block title %}Post{% endblock %}
+{% block content %}
 	<div class="container">
 		<h2>Write a Post</h2>
 		<form method="POST">
 			{% csrf_token%}
 			<label>PostBody</label>
 			<br>
-			<textarea name="post" cols="30" rows="10" required></textarea>
+			<textarea class="text" name="post" cols="30" rows="10" required></textarea>
 			<br>
 			<button class="btn" type="submit">send</button>
 			<button class="btn" type="reset">reset</button>
 			<a href="{% url 'index' %}">cancel</a>
 		</form>
 	</div>
-</body>
-</html>
+{% endblock %}
