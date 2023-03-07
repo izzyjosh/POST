@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% extends "base.html" %}
+
+{% block body%}
     <title>Home Page</title>
     <style>
         * {
@@ -111,9 +108,8 @@
  			<a href="{% url 'confirm' fpost.id %}"><button class="btn">delete</button></a>
  			<a href="{% url 'update' fpost.id%}"><button class="btn">update</button></a>
  		{% endfor %}	
- 		</ol>
+		</ol>
  	</main>
  	<footer>copyright &copy; Joshua Joseph</footer>
  </body>
- 
- </html>
+ {% endblock %}
